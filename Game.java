@@ -127,23 +127,14 @@ public class Game
         else if (commandWord.equals("quit")) {
             wantToQuit = quit(command);
         }
-        else if (commandWord.equals("chargeBeamer")){
-            chargeBeamer();
-        }
-        else if (commandWord.equals("fireBeamer")){
-            if (beamer!=null){
-                fireBeamer();
-                System.out.println("\nYou have been teleported by the Beamer");
-            }else{
-                System.out.println("\nThe beamer is not locked!");
-            }
-        }else if(commandWord.equals("inspect")){
+ 
+        else if(commandWord.equals("inspect")){
             inspect();
         }
         // else command not recognised.
         return wantToQuit;
     }
-    // implementations of user commands:
+     // implementations of user commands:
 
     /**
      * Print out some help information.
@@ -156,7 +147,7 @@ public class Game
         System.out.println("around at the university.");
         System.out.println();
         System.out.println("Your command words are:");
-        parser.showCommands();
+        System.out.println(parser.getCommandList());
     }
 
     /** 
