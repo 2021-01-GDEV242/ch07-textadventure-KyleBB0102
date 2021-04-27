@@ -67,21 +67,43 @@ public class Game
 
     /**
      *  Main play routine.  Loops until end of play.
+     *  
+     *  Difficult Setting:
+     *  Easy: 50 Turns
+     *  Medium: 35 Turns
+     *  Hard: 15 Turns  
      */
-    public void play() 
+    public void play(int turns) 
     {            
-        printWelcome();
+        turnsLeft = turns;
+        // checks that the value of turns is set to a positive value.
+        Scanner reader = new Scanner(System.in);
+        int inputNewTurns;
+        while(turnsLeft<0){
+            System.out.print("The value of turns is negative, Please use a positive value! : ");
+            inputNewTurns = reader.nextInt();
+            setTurns(inputNewTurns);
+        }
 
+        printWelcome();
+        
         // Enter the main command loop.  Here we repeatedly read commands and
         // execute them until the game is over.
-                
+        
         boolean finished = false;
         while (! finished) {
+            System.out.println("Turns left: " + getTurns());
+            System.out.println("Key : "+ getKeyStatus() + " of 3");
             Command command = parser.getCommand();
             finished = processCommand(command);
+            if(getTurns() == 0){
+                finished = true;
+                System.out.println("You didn't make it in time!!!");
+            }
         }
-        System.out.println("Thank you for playing.  Good bye.");
+        System.out.println("\nThank you for playing.  Good bye.");
     }
+
 
     /**
      * Print out the opening message for the player.
