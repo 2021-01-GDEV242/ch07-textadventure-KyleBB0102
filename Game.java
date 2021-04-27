@@ -12,7 +12,7 @@
  *  executes the commands that the parser returns.
  * 
  * @author  Kyle Balao
- * @version 04/
+ * @version 04/27/21
  */
 public class Game 
 {
@@ -89,8 +89,16 @@ public class Game
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
     }
-
+    
     /**
+     * Adding a look method for Game class
+     */
+    private void look()
+    {
+        System.out.println(currentRoom.getLongDescription());
+    }
+
+     /**
      * Given a command, process (that is: execute) the command.
      * @param command The command to be processed.
      * @return true If the command ends the game, false otherwise.
@@ -99,28 +107,42 @@ public class Game
     {
         boolean wantToQuit = false;
 
-        CommandWord commandWord = command.getCommandWord();
-
-        switch (commandWord) {
-            case UNKNOWN:
-                System.out.println("I don't know what you mean...");
-                break;
-
-            case HELP:
-                printHelp();
-                break;
-
-            case GO:
-                goRoom(command);
-                break;
-
-            case QUIT:
-                wantToQuit = quit(command);
-                break;
+        if(command.isUnknown()) {
+            System.out.println("I don't know what you mean...");
+            return false;
         }
+
+        String commandWord = command.getCommandWord();
+        if (commandWord.equals("help")) {
+            System.out.println("");
+            printHelp();
+        }
+        else if (commandWord.equals("go")) {
+            System.out.println("");
+            goRoom(command);
+        }
+        else if (commandWord.equals("look")){
+            look();
+        }
+        else if (commandWord.equals("quit")) {
+            wantToQuit = quit(command);
+        }
+        else if (commandWord.equals("chargeBeamer")){
+            chargeBeamer();
+        }
+        else if (commandWord.equals("fireBeamer")){
+            if (beamer!=null){
+                fireBeamer();
+                System.out.println("\nYou have been teleported by the Beamer");
+            }else{
+                System.out.println("\nThe beamer is not locked!");
+            }
+        }else if(commandWord.equals("inspect")){
+            inspect();
+        }
+        // else command not recognised.
         return wantToQuit;
     }
-
     // implementations of user commands:
 
     /**
