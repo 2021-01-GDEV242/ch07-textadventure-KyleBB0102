@@ -1,9 +1,3 @@
-
-
-
-import java.util.Random;
-import java.util.ArrayList;
-import java.util.Scanner;
 /**
  *  This class is the main class of the "World of Zuul" application. 
  *  "World of Zuul" is a very simple, text based adventure game.  Users 
@@ -119,38 +113,11 @@ public class Game
     }
     
     /**
-     * Helps you look around surrounding area
-     * 
-     * @return description of the current room
+     * Adding a look method for Game class
      */
     private void look()
     {
         System.out.println(currentRoom.getLongDescription());
-    }
-    
-    /**
-     * Simple command stating you have eaten
-     */
-    private void eat()
-    {
-        System.out.println("You have eaten now and you are not hungry any more");
-    }
-    
-    /**
-     * Add locked doors to your game. The player needs to find (or otherwise obtain)
-     * a key to open a door.
-     * 
-     * Inspect the room to see is there is a key.
-     */
-    private void inspect(){
-        if (currentRoom.equals(room[keyRoomIndex])){
-            System.out.println("\nYou found the Victory Key");
-            System.out.println(currentRoom.getExitString());
-            setKeyStatus();
-        }else{
-            System.out.println("\nThere is nothing useful here...");
-            System.out.println(currentRoom.getExitString());
-        }
     }
 
      /**
@@ -182,9 +149,6 @@ public class Game
         else if (commandWord.equals("quit")) {
             wantToQuit = quit(command);
         }
-        else if (commandWord.equals("eat")) {
-            eat();
-        }
  
         else if(commandWord.equals("inspect")){
             inspect();
@@ -205,14 +169,14 @@ public class Game
         System.out.println("around at the university.");
         System.out.println();
         System.out.println("Your command words are:");
-        parser.showCommands();
+        System.out.println(parser.getCommandList());
     }
 
     /** 
      * Try to go in one direction. If there is an exit, enter the new
      * room, otherwise print an error message.
      */
-     private void goRoom(Command command) 
+    private void goRoom(Command command) 
     {
         if(!command.hasSecondWord()) {
             // if there is no second word, we don't know where to go...
@@ -228,28 +192,11 @@ public class Game
         if (nextRoom == null) {
             System.out.println("There is no door!");
         }
-        else if(nextRoom.equals(room[5])){
-            System.out.println("You got teleported and dont know where you are");
-            setTeleport();
-            countDownTurns();
-            currentRoom = room[5];
-            System.out.println(currentRoom.getLongDescription());
-        }else if(nextRoom.equals(room[6])){
-            if (getKeyStatus()== 3){
-                System.out.println("You enterd the victory room");
-                System.out.println("Here you are confronted by a friend of yours who tells you");
-                System.out.println("that you are actually are dead...");
-                turnsLeft = 1;
-            }else{
-                System.out.println("The door is locked! Try find the three keys");
-            }
-        }else{
+        else {
             currentRoom = nextRoom;
-            countDownTurns();
             System.out.println(currentRoom.getLongDescription());
         }
     }
-
 
     /** 
      * "Quit" was entered. Check the rest of the command to see
