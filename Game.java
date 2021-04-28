@@ -17,8 +17,7 @@
 public class Game 
 {
     private Parser parser;
-    private Room currentRoom;
-        
+    private Room currentRoom; 
     /**
      * Create the game and initialise its internal map.
      */
@@ -119,6 +118,13 @@ public class Game
     {
         System.out.println(currentRoom.getLongDescription());
     }
+    /**
+     * Simple command stating you have eaten
+     */
+    private void eat()
+    {
+        System.out.println("You have eaten now and you are not hungry any more");
+    }
 
      /**
      * Given a command, process (that is: execute) the command.
@@ -146,6 +152,9 @@ public class Game
         else if (commandWord.equals("look")){
             look();
         }
+        else if (commandWord.equals("eat")){
+            eat();
+        }
         else if (commandWord.equals("quit")) {
             wantToQuit = quit(command);
         }
@@ -169,7 +178,7 @@ public class Game
         System.out.println("around at the university.");
         System.out.println();
         System.out.println("Your command words are:");
-        System.out.println(parser.getCommandList());
+        parser.showCommands();
     }
 
     /** 
