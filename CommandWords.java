@@ -15,14 +15,13 @@ public class CommandWords
 {
     // a constant array that holds all valid command words
     private static final String[] validCommands = {
-            "go", "quit", "help", "look", "eat", "inspect"
+            "go", "quit", "help", "look", "eat","inspect"
     };
     private static final String[] commandDescription = {
-            " - Too go to your next location using a exit direction.",
-            " - Too quit the game.",
-            " - Too get the list of commands",
-            " - Lock the beamer at your current position.",
-            " - Fire the beamer too send you to the locked position",
+            " - To go to your next location using a exit direction.",
+            " - To quit the game.",
+            " - To get the list of commands",
+            " - You have eaten now and you are not hungry any more",
             " - Inspect the room too see if there is any useful stuff",
     };
 
