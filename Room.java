@@ -48,6 +48,13 @@ public class Room
     {
         exits.put(direction, neighbor);
     }
+    
+    /**
+     * Adds an item to the items array
+     */    
+    public void addItem(Item item){
+        items.add(item);
+    }
 
     /**
      * @return The short description of the room
