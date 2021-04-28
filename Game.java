@@ -136,6 +136,30 @@ public class Game
         }
         System.out.println("\nThank you for playing.  Good bye.");
     }
+    /**
+     * Adding a time limit for the game
+     * 
+     * Counts down the turns by one;
+     */
+    private void countDownTurns(){
+        turnsLeft--;
+    }
+
+    /**
+     * Returns the value of turns left
+     * 
+     * @return turns, the number of turns left
+     */
+    private int getTurns(){
+        return turnsLeft;
+    }
+
+    /**
+     * Set the value of turn
+     */
+    private void setTurns(int turns){
+        turnsLeft = turns;
+    }
 
 
     /**
