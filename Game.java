@@ -1,3 +1,9 @@
+
+
+
+import java.util.Random;
+import java.util.ArrayList;
+import java.util.Scanner;
 /**
  *  This class is the main class of the "World of Zuul" application. 
  *  "World of Zuul" is a very simple, text based adventure game.  Users 
@@ -17,7 +23,13 @@
 public class Game 
 {
     private Parser parser;
-    private Room currentRoom; 
+    private Room currentRoom;
+    private int turnsLeft;  //number of turns you can have before losing
+    private Room[] room; // The array that contains alla the rooms
+    private Random random; //Generates the randomness for the teleporter
+    private int keyChecker; //the checkar to see if you have the keys
+    private ArrayList<Item> keys; //the Key to win
+    private int keyRoomIndex; //the index for the room that the key is in
     /**
      * Create the game and initialise its internal map.
      */
