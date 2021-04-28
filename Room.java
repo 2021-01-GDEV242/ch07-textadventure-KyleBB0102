@@ -1,6 +1,8 @@
 import java.util.Set;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Random;
+import java.util.ArrayList;
 
 /**
  * Class Room - a room in an adventure game.
@@ -12,14 +14,16 @@ import java.util.Iterator;
  * connected to other rooms via exits.  For each existing exit, the room 
  * stores a reference to the neighboring room.
  * 
- * @author  Michael Kölling and David J. Barnes
- * @version 2016.02.29
+ * @author  Kyle Balao
+ * @version 04/27/21
  */
 
 public class Room 
 {
     private String description;
     private HashMap<String, Room> exits;        // stores exits of this room.
+    private Random randTeleport;
+    private ArrayList<Item> items;    //the items in the room
 
     /**
      * Create a room described "description". Initially, it has
@@ -31,6 +35,8 @@ public class Room
     {
         this.description = description;
         exits = new HashMap<>();
+        randTeleport = new Random();
+        items = new ArrayList<Item>();
     }
 
     /**
