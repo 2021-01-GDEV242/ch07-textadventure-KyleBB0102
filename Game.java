@@ -170,6 +170,10 @@ public class Game
         System.out.println();
         System.out.println("Welcome to the World of Zuul!");
         System.out.println("World of Zuul is a new, incredibly boring adventure game.");
+         System.out.println("The goal of this game is easy ");
+        System.out.println("All you have to do is to find the Victory Keys to access the Victory Room! Then you're done!");
+        System.out.println("Type 'help' to get the list of commands. \n"+ "Recomended: Do this if you're a first time player!");
+        System.out.println("Type 'go' and a exit direction to move forward.");
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
