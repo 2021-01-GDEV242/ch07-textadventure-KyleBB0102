@@ -188,6 +188,22 @@ public class Game
     }
     
     /**
+     * Returns the status for the key
+     * 
+     * @return keychecker and the number of the key found
+     */
+    private int getKeyStatus(){
+        return keyChecker;
+    }
+
+    /**
+     * Increases the keyChecker by one after a key has been found
+     */
+    private void setKeyStatus(){
+        keyChecker++;
+    }
+    
+    /**
      * Adding a look method for Game class
      */
     private void look()
