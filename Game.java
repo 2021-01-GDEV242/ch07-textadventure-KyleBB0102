@@ -217,6 +217,22 @@ public class Game
     {
         System.out.println("You have eaten now and you are not hungry any more");
     }
+    
+    /**
+     * Locked doors require inspection to check if door is locked or not. A key will help 
+     * unlock door
+     * 
+     */
+    private void inspect(){
+        if (currentRoom.equals(room[keyRoomIndex])){
+            System.out.println("\nYou found the Victory Key");
+            System.out.println(currentRoom.getExitString());
+            setKeyStatus();
+        }else{
+            System.out.println("\nThere is nothing useful here...");
+            System.out.println(currentRoom.getExitString());
+        }
+    }
 
      /**
      * Given a command, process (that is: execute) the command.
