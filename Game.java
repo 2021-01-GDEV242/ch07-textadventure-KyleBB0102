@@ -79,6 +79,23 @@ public class Game
         cellar.setExit("east", victoryRoom);
 
         currentRoom = outside;  // start game outside
+        
+        //create the array for all the rooms
+        room = new Room[]{outside, theater, pub, lab, office, teleporter, victoryRoom};
+
+        //Create the key victory key
+        Item key1 = new Item("Victory key 1", 1);
+        Item key2 = new Item("Victory key 2", 1);
+        Item key3 = new Item("Victory key 3", 1);
+
+        //Creates an array for the key and add the key
+        keys = new ArrayList<Item>();
+        keys.add(key1);
+        keys.add(key2);
+        keys.add(key3);
+
+        //Placing the key in a random room
+        placeKey();
     }
 
     /**
@@ -132,6 +149,18 @@ public class Game
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
+    }
+    
+    /**
+     * Places the keys at random rooms on start.
+     */ 
+    private void placeKey(){
+        for (int i = 0; i<keys.size(); i++){
+            Random randKey = new Random();
+            keyRoomIndex = randKey.nextInt(room.length-1); //-1 for avoiding the key to end upp at the victory room
+            Room keyRoom = room[keyRoomIndex];
+            keyRoom.addItem(keys.get(i));
+        }
     }
     
     /**
