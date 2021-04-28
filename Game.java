@@ -53,11 +53,18 @@ public class Game
         theater.setExit("west", outside);
 
         pub.setExit("east", outside);
+        pub.setExit("down", cellar);
 
         lab.setExit("north", outside);
         lab.setExit("east", office);
+        lab.setExit("down", cellar);
 
         office.setExit("west", lab);
+
+        //Once you go are in the cellar you cant go back to the pub och the lab
+        //because the door locked itself (trapdoor implementation).
+        cellar.setExit("west", teleporter);
+        cellar.setExit("east", victoryRoom);
 
         currentRoom = outside;  // start game outside
     }
